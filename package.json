@@ -37,6 +37,7 @@
     "test:coverage": "lb-nyc npm run test",
     "test:visualize": "npm run test -- --reporter mochawesome --reporter-options reportDir=reports/test-results,reportFilename=index",
     "test:report": "lb-nyc -r html -r json-summary npm run test:visualize",
+    "test:coveralls": "lb-nyc npm test && lb-nyc report --reporter=text-lcov | coveralls",
     "rebuild": "npm run clean && npm run build",
     "prepack": "npm run build",
     "prepublishOnly": "npm test",
