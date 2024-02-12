@@ -204,7 +204,7 @@ provided to the [init function](#initialize-tracing).
 
 ## Example
 
-For an example on how to create custom spans see [tracing interceptor](src/interceptors/tracing.interceptor.ts)
+For an example on how to create custom spans see [tracing interceptor][tracing interceptor]
 and for more information, please read the [opentelemetry tracing documentation][opentelemetry-tracing].
 
 ## Debug
@@ -241,9 +241,10 @@ This project is licensed under the MIT license. See the [LICENSE](LICENSE) file 
 
 [lb4-debug-strings]: https://loopback.io/doc/en/lb4/Setting-debug-strings.html
 
-[default-config]: https://github.com/nflaig/loopback4-tracing/blob/master/src/constants.ts#L12
-[env-vars]: https://github.com/nflaig/loopback4-tracing/blob/master/src/constants.ts#L58
-[tracing-options]: https://github.com/nflaig/loopback4-tracing/blob/master/src/types.ts#L21
+[default-config]: https://github.com/nflaig/loopback4-tracing/blob/main/src/constants.ts#L16
+[env-vars]: https://github.com/nflaig/loopback4-tracing/blob/main/src/constants.ts#L48
+[tracing-options]: https://github.com/nflaig/loopback4-tracing/blob/main/src/types.ts#L17
+[tracing interceptor]: https://github.com/nflaig/loopback4-tracing/blob/main/src/interceptors/tracing.interceptor.ts
 
 [opentelemetry-tracing]: https://github.com/open-telemetry/opentelemetry-js-api/blob/main/docs/tracing.md
 [opentelemtry-specifications]: https://github.com/open-telemetry/opentelemetry-specification
