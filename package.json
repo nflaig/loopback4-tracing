@@ -1,0 +1,102 @@
+{
+  "name": "loopback4-tracing",
+  "version": "0.1.0",
+  "description": "LoopBack 4 Tracing Component",
+  "keywords": [
+    "loopback-extension",
+    "loopback",
+    "opentelemetry",
+    "tracing",
+    "profiling",
+    "jaeger"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "engines": {
+    "node": ">=10.16",
+    "npm": ">=7"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "build": "lb-tsc --copy-resources",
+    "build:watch": "lb-tsc --watch",
+    "clean": "lb-clean dist *.tsbuildinfo .eslintcache",
+    "lint": "npm run eslint && npm run prettier:check",
+    "lint:fix": "npm run eslint:fix && npm run prettier:fix",
+    "prettier:cli": "lb-prettier \"**/*.ts\" \"**/*.js\"",
+    "prettier:check": "npm run prettier:cli -- -l",
+    "prettier:fix": "npm run prettier:cli -- --write",
+    "eslint": "lb-eslint --report-unused-disable-directives .",
+    "eslint:fix": "npm run eslint -- --fix",
+    "pretest": "npm run rebuild",
+    "test": "lb-mocha --allow-console-logs \"dist/__tests__\"",
+    "test:dev": "lb-mocha --allow-console-logs \"dist/__tests__\"",
+    "test:ci": "lb-nyc -r lcov -r text npm run test:dev",
+    "test:coverage": "lb-nyc npm run test",
+    "test:visualize": "npm run test -- --reporter mochawesome --reporter-options reportDir=reports/test-results,reportFilename=index",
+    "test:report": "lb-nyc -r html -r json-summary npm run test:visualize",
+    "rebuild": "npm run clean && npm run build",
+    "prepack": "npm run build",
+    "prepublishOnly": "npm test",
+    "verify": "npm run build && npm pack && lb-clean *.tgz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nflaig/loopback4-tracing"
+  },
+  "bugs": {
+    "url": "https://github.com/nflaig/loopback4-tracing/issues"
+  },
+  "homepage": "https://github.com/nflaig/loopback4-tracing#readme",
+  "author": "Nico Flaig <nflaig@protonmail.com>",
+  "license": "MIT",
+  "files": [
+    "README.md",
+    "dist",
+    "src",
+    "!*/__tests__"
+  ],
+  "peerDependencies": {
+    "@loopback/core": ">=2.14.0",
+    "@loopback/rest": ">=9.1.2"
+  },
+  "dependencies": {
+    "@opentelemetry/api": "1.0.1",
+    "@opentelemetry/core": "0.22.0",
+    "@opentelemetry/exporter-jaeger": "0.22.0",
+    "@opentelemetry/instrumentation": "0.22.0",
+    "@opentelemetry/instrumentation-http": "0.22.0",
+    "@opentelemetry/node": "0.22.0",
+    "@opentelemetry/propagator-jaeger": "0.22.0",
+    "@opentelemetry/resources": "0.22.0",
+    "@opentelemetry/semantic-conventions": "0.22.0",
+    "@opentelemetry/tracing": "0.22.0",
+    "debug": "^4.3.4",
+    "lodash": "^4.17.21",
+    "tslib": "^2.2.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@loopback/build": "6.4.0",
+    "@loopback/core": "2.16.1",
+    "@loopback/eslint-config": "10.2.0",
+    "@loopback/repository": "3.7.0",
+    "@loopback/rest": "9.3.1",
+    "@loopback/testlab": "3.4.0",
+    "@types/lodash": "4.14.169",
+    "@types/node": "14.14.41",
+    "@types/proxyquire": "1.3.28",
+    "@types/sinon-express-mock": "^1.3.12",
+    "@types/uuid": "8.3.0",
+    "eslint": "7.26.0",
+    "mochawesome": "6.2.2",
+    "nock": "13.0.11",
+    "proxyquire": "2.1.3",
+    "sinon-express-mock": "^2.2.1",
+    "source-map-support": "0.5.21",
+    "ts-node": "10.8.0",
+    "typescript": "4.7.2"
+  }
+}
